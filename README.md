@@ -68,7 +68,15 @@ pip install -r requirements.txt
 
 ```shell
 python train.py -s your/path/to/the/dataset -m your/path/to/save --eval
+
+# Mip-360
+python train.py -s your/path/to/the/dataset -m your/path/to/save --eval -r [2/4]
+
+# Others
+python train.py -s your/path/to/the/dataset -m your/path/to/save --eval -r [2/4]
 ```
+
+It should be noted that we adopted the same approach as ZipNeRF, Pixel-GS, and RadSplat, downsampling outdoor scenes (`bicycle`, `garden`, `stump`, `flower`, `treehill`) by 4 times and indoor scenes (`bonsai`, `counter`, `kitchen`, `room`) by 2 times. 
 
 
 
