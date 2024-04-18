@@ -49,8 +49,8 @@ data/
 ### Environment
 
 ```shell
-git clone https://github.com/ingra14m/robust-gaussian-splatting --recursive
-cd robust-gaussian-splatting
+git clone https://github.com/ingra14m/floater-free-gaussian-splatting --recursive
+cd floater-free-gaussian-splatting
 
 conda create -n abs-gaussian-env python=3.8
 conda activate abs-gaussian-env
