@@ -125,7 +125,7 @@ https://github.com/ingra14m/robust-gaussian-splatting/assets/63096187/e0f34e5f-e
 
 https://github.com/ingra14m/floater-free-gaussian-splatting/assets/63096187/52d99636-cc9c-4b57-aaf1-651759e7e4c7
 
-
+https://github.com/ingra14m/floater-free-gaussian-splatting/assets/63096187/0b1b9687-d75e-4c69-bc98-34c37c56e86c
 
 ### NeRF
 
