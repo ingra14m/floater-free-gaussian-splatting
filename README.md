@@ -120,6 +120,7 @@ python metrics.py -m your/path/to/save
 | Average  | 27.85 | 0.8345 | 0.1765 | 755  | 104  |
 
 https://github.com/ingra14m/robust-gaussian-splatting/assets/63096187/e0f34e5f-ee83-442b-86fc-422c57c40a6b
+https://github.com/ingra14m/floater-free-gaussian-splatting/assets/63096187/52d99636-cc9c-4b57-aaf1-651759e7e4c7
 
 ## Methods
 
