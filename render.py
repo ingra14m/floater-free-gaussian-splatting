@@ -24,6 +24,7 @@ from arguments import ModelParams, PipelineParams, get_combined_args
 from gaussian_renderer import GaussianModel
 import imageio
 import numpy as np
+import time
 
 def render_set(model_path, name, iteration, views, gaussians, pipeline, background):
     render_path = os.path.join(model_path, name, "ours_{}".format(iteration), "renders")
@@ -34,6 +35,7 @@ def render_set(model_path, name, iteration, views, gaussians, pipeline, backgrou
 
     to8b = lambda x: (255 * np.clip(x, 0, 1)).astype(np.uint8)
     renderings = []
+    t_list = []
 
     for idx, view in enumerate(tqdm(views, desc="Rendering progress")):
         rendering = render(view, gaussians, pipeline, background)["render"]
@@ -41,10 +43,24 @@ def render_set(model_path, name, iteration, views, gaussians, pipeline, backgrou
 
         renderings.append(to8b(gt.cpu().numpy()))
 
-    renderings = np.stack(renderings, 0).transpose(0, 2, 3, 1)
-    imageio.mimwrite(os.path.join(render_path, 'video.mp4'), renderings, fps=24, quality=8)
-        #torchvision.utils.save_image(rendering, os.path.join(render_path, '{0:05d}'.format(idx) + ".png"))
-        #torchvision.utils.save_image(gt, os.path.join(gts_path, '{0:05d}'.format(idx) + ".png"))
+    #renderings = np.stack(renderings, 0).transpose(0, 2, 3, 1)
+    #imageio.mimwrite(os.path.join(render_path, 'video.mp4'), renderings, fps=24, quality=8)
+        torchvision.utils.save_image(rendering, os.path.join(render_path, '{0:05d}'.format(idx) + ".png"))
+        torchvision.utils.save_image(gt, os.path.join(gts_path, '{0:05d}'.format(idx) + ".png"))
+
+    for idx, view in enumerate(tqdm(views, desc="Rendering progress")):
+        torch.cuda.synchronize()
+        t_start = time.time()
+
+        rendering = render(view, gaussians, pipeline, background)["render"]
+
+        torch.cuda.synchronize()
+        t_end = time.time()
+        t_list.append(t_end - t_start)
+
+    t = np.array(t_list[5:])
+    fps = 1.0 / t.mean()
+    print(f'Test FPS: \033[1;35m{fps:.5f}\033[0m')
 
 
 def interpolate_all(model_path, name, iteration, views, gaussians, pipeline, background):
