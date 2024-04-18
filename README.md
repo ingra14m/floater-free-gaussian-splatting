@@ -7,6 +7,42 @@ Compared to [Pixel-GS](https://pixelgs.github.io/), our project can achieve the 
 
 
 
+## Dataset
+
+In this project, you can use:
+
+- synthetic dataset from [NeRF](https://drive.google.com/drive/folders/128yBriW1IG_3NJ5Rp7APSTZsJqdJdfc1), and [NSVF](https://dl.fbaipublicfiles.com/nsvf/dataset/Synthetic_NSVF.zip)
+- real-world dataset from [Mip-NeRF 360](https://jonbarron.info/mipnerf360/) and [tandt_db](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/datasets/input/tandt_db.zip).
+
+And the data structure should be organized as follows:
+
+```shell
+data/
+├── NeRF
+│   ├── Chair/
+│   ├── Drums/
+│   ├── ...
+├── NSVF
+│   ├── Bike/
+│   ├── Lifestyle/
+│   ├── ...
+├── Mip-360
+│   ├── bicycle/
+│   ├── bonsai/
+│   ├── ...
+├── tandt_db
+│   ├── db/
+│   │   ├── drjohnson/
+│   │   ├── playroom/
+│   ├── tandt/
+│   │   ├── train/
+│   │   ├── truck/
+```
+
+
+
+
+
 ## Run
 
 ### Environment
@@ -23,6 +59,14 @@ pip install torch==1.13.1+cu116 torchvision==0.14.1+cu116 --extra-index-url http
 
 # install dependencies
 pip install -r requirements.txt
+```
+
+
+
+### Train
+
+```shell
+python train.py -s your/path/to/the/dataset -m your/path/to/save --eval
 ```
 
 
