@@ -119,7 +119,7 @@ python metrics.py -m your/path/to/save
 | treehill | 22.39 | 0.6475 | 0.2697 | 1087 | 87   |
 | Average  | 27.85 | 0.8345 | 0.1765 | 755  | 104  |
 
-
+https://github.com/ingra14m/robust-gaussian-splatting/assets/63096187/e0f34e5f-ee83-442b-86fc-422c57c40a6b
 
 ## Methods
 
