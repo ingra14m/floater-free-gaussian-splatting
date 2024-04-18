@@ -1,11 +1,12 @@
 # Robust-Gaussian-Splatting
+
+![](assets/teaser.png)
+
 This repo uses the absolute value of the gradient of pixel pairs for GS to accumulate the gradient of each GS. Since the preprint paper [absGS](https://ty424.github.io/AbsGS.github.io/) did the same thing, therefore, you can also consider this repo as an unofficial implementation of [absGS](https://ty424.github.io/AbsGS.github.io/). 
 
 
 
 Compared to [Pixel-GS](https://pixelgs.github.io/), our project can achieve the removal of floaters without significantly increasing the number of GS. In some scenarios where the point cloud distribution is good, it can reduce the number of point clouds. Compared to [Radsplat](https://arxiv.org/abs/2403.13806), our method does not require training zipnerf, and the training time on a 3090 is approximately 30 minutes.
-
-
 
 ## Dataset
 
@@ -67,6 +68,30 @@ pip install -r requirements.txt
 
 ```shell
 python train.py -s your/path/to/the/dataset -m your/path/to/save --eval
+```
+
+
+
+### Render
+
+```shell
+python render.py -m your/path/to/save --eval --skip_train
+```
+
+
+
+### Render Video
+
+```shell
+python render.py -m your/path/to/save --eval --skip_train --skip_test --render_video
+```
+
+
+
+### Metrics
+
+```
+python metrics.py -m your/path/to/save
 ```
 
 
