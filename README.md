@@ -1,4 +1,4 @@
-# Robust-Gaussian-Splatting
+# Floater-Free-Gaussian-Splatting
 
 ![](assets/teaser.png)
 
