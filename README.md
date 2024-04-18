@@ -7,16 +7,22 @@ Compared to [Pixel-GS](https://pixelgs.github.io/), our project can achieve the 
 
 
 
-## Methods
+## Run
 
-```c++
-// vanilla gradients for densification
-atomicAdd(&dL_dmean2D[global_id].x, dL_dG * dG_ddelx * ddelx_dx);
-atomicAdd(&dL_dmean2D[global_id].y, dL_dG * dG_ddely * ddely_dy);
+### Environment
 
-// abs gradients for densification
-atomicAdd(&dL_dmean2D_densify[global_id].x, fabsf(dL_dG * dG_ddelx * ddelx_dx));
-atomicAdd(&dL_dmean2D_densify[global_id].y, fabsf(dL_dG * dG_ddely * ddely_dy));
+```shell
+git clone https://github.com/ingra14m/robust-gaussian-splatting --recursive
+cd robust-gaussian-splatting
+
+conda create -n abs-gaussian-env python=3.8
+conda activate abs-gaussian-env
+
+# install pytorch
+pip install torch==1.13.1+cu116 torchvision==0.14.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116
+
+# install dependencies
+pip install -r requirements.txt
 ```
 
 
@@ -30,11 +36,25 @@ atomicAdd(&dL_dmean2D_densify[global_id].y, fabsf(dL_dG * dG_ddely * ddely_dy));
 | counter  | 29.22 | 0.9187 | 0.1687 | 261  | 125  |
 | garden   | 27.95 | 0.8799 | 0.0934 | 971  | 65   |
 | kitchen  | 31.91 | 0.9351 | 0.1081 | 434  | 99   |
-| room     | 31.78 | 0.9331 | 0.175  | 416  | 114  |
+| room     | 31.78 | 0.9331 | 0.1750 | 416  | 114  |
 | stump    | 27.3  | 0.7976 | 0.1848 | 1043 | 103  |
 | flower   | 21.84 | 0.6495 | 0.2629 | 888  | 105  |
 | treehill | 22.39 | 0.6475 | 0.2697 | 1087 | 87   |
 | Average  | 27.85 | 0.8345 | 0.1765 | 755  | 104  |
+
+
+
+## Methods
+
+```c++
+// vanilla gradients for densification
+atomicAdd(&dL_dmean2D[global_id].x, dL_dG * dG_ddelx * ddelx_dx);
+atomicAdd(&dL_dmean2D[global_id].y, dL_dG * dG_ddely * ddely_dy);
+
+// abs gradients for densification
+atomicAdd(&dL_dmean2D_densify[global_id].x, fabsf(dL_dG * dG_ddelx * ddelx_dx));
+atomicAdd(&dL_dmean2D_densify[global_id].y, fabsf(dL_dG * dG_ddely * ddely_dy));
+```
 
 
 
