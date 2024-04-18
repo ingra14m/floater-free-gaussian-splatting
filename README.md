@@ -106,6 +106,8 @@ python metrics.py -m your/path/to/save
 
 ## Results
 
+### Mip360
+
 | Scene    | PSNR  | SSIM   | LPIPS  | Mem  | FPS  |
 | -------- | ----- | ------ | ------ | ---- | ---- |
 | bicycle  | 25.82 | 0.7989 | 0.1656 | 1441 | 66   |
@@ -122,6 +124,22 @@ python metrics.py -m your/path/to/save
 https://github.com/ingra14m/robust-gaussian-splatting/assets/63096187/e0f34e5f-ee83-442b-86fc-422c57c40a6b
 
 https://github.com/ingra14m/floater-free-gaussian-splatting/assets/63096187/52d99636-cc9c-4b57-aaf1-651759e7e4c7
+
+
+
+### NeRF
+
+| Scene     | PSNR  | SSIM   | LPIPS  | Mem  | FPS  |
+| --------- | ----- | ------ | ------ | ---- | ---- |
+| chair     | 35.69 | 0.9879 | 0.0103 | 101  | 219  |
+| drums     | 26.33 | 0.955  | 0.0363 | 74   | 300  |
+| ficus     | 35.54 | 0.987  | 0.0117 | 48   | 386  |
+| hotdog    | 38.17 | 0.9857 | 0.0185 | 44   | 331  |
+| lego      | 36.4  | 0.9833 | 0.0148 | 61   | 317  |
+| materials | 30.61 | 0.961  | 0.0357 | 33   | 444  |
+| mic       | 36.73 | 0.9926 | 0.0063 | 39   | 307  |
+| ship      | 31.85 | 0.9061 | 0.0998 | 89   | 212  |
+| Average   | 33.92 | 0.9698 | 0.0292 | 61   | 315  |
 
 ## Methods
 
