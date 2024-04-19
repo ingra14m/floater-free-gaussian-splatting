@@ -157,6 +157,8 @@ https://github.com/ingra14m/floater-free-gaussian-splatting/assets/63096187/0b1b
 
 ## Methods
 
+Don't forget to install the new diff-gaussian-rasterization in [diff-gaussian-rasterization-extentions](https://github.com/ingra14m/diff-gaussian-rasterization-extentions/tree/filter-norm). This pipeline supports pre-filter, depth visualization, and uses additional variables to store the contribution of each pixel to the GS gradient (the contribution should obviously be positive).
+
 ```c++
 // vanilla gradients for densification
 atomicAdd(&dL_dmean2D[global_id].x, dL_dG * dG_ddelx * ddelx_dx);
