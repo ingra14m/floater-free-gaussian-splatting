@@ -225,7 +225,7 @@ def render_video(model_path, iteration, views, gaussians, pipeline, background):
     imageio.mimwrite(os.path.join(render_path, 'video.mp4'), renderings, fps=60, quality=8)
 
 
-def render_sets(dataset : ModelParams, iteration : int, pipeline : PipelineParams, skip_train : bool, skip_test : bool, render_video : bool):
+def render_sets(dataset : ModelParams, iteration : int, pipeline : PipelineParams, skip_train : bool, skip_test : bool, video : bool):
     with torch.no_grad():
         gaussians = GaussianModel(dataset.sh_degree)
         scene = Scene(dataset, gaussians, load_iteration=iteration, shuffle=False)
@@ -240,7 +240,7 @@ def render_sets(dataset : ModelParams, iteration : int, pipeline : PipelineParam
         if not skip_test:
              render_set(dataset.model_path, "test", scene.loaded_iter, scene.getTestCameras(), gaussians, pipeline, background)
 
-        if render_video:
+        if video:
             render_video(dataset.model_path, scene.loaded_iter, scene.getTrainCameras(), gaussians, pipeline, background)
 
 
